@@ -117,22 +117,27 @@
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("PGFlNf-4VS3qP5Mhp");
-    })();
+    // EmailJS Public Key ve IDs
+    emailjs.init("PGFlNf-4VS3qP5Mhp");
+    const SERVICE_ID = "ZCSAE1-ytvc3T04yIS1ay";
+    const TEMPLATE_ID = "template_jwf69nz";
 
-    document.getElementById("askForm").addEventListener("submit", function(event) {
+    const form = document.getElementById("askForm");
+    const successMsg = document.getElementById("successMsg");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function(event) {
       event.preventDefault();
+      successMsg.style.display = "none";
+      errorMsg.style.display = "none";
 
-      emailjs.sendForm("ZCSAE1-ytvc3T04yIS1ay", "template_jwf69nz", this)
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
         .then(() => {
-          document.getElementById("successMsg").style.display = "block";
-          document.getElementById("errorMsg").style.display = "none";
+          successMsg.style.display = "block";
           this.reset();
         }, (error) => {
-          document.getElementById("successMsg").style.display = "none";
-          document.getElementById("errorMsg").style.display = "block";
           console.error("EmailJS Hatası:", error);
+          errorMsg.style.display = "block";
         });
     });
   </script>
