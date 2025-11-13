@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalpten Gelen Cevaplar 💖</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffe6eb, #fff);
+      color: #b03060;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: "Dancing Script", cursive;
+      color: #d6336c;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    form {
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(214, 51, 108, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1px solid #f5b5c0;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1em;
+      resize: none;
+      outline: none;
+      background: #fff0f5;
+      transition: 0.3s;
+    }
+
+    textarea:focus {
+      border-color: #d6336c;
+      box-shadow: 0 0 5px #ffb6c1;
+    }
+
+    button {
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #b02552;
+    }
+
+    .success-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kalpten Gelen Cevaplar 💖</h1>
+  <p>Bu sorulara içtenlikle cevap ver, belki bir kalp daha atmaya başlar... 💌</p>
+
+  <form id="contact-form">
+    <label>1. Hangi tür film/dizilerden hoşlanırsın?</label>
+    <textarea name="film" rows="2"></textarea>
+
+    <label>2. Hangi tarz kitapları okumayı seversin?</label>
+    <textarea name="kitap" rows="2"></textarea>
+
+    <label>3. Hangi sosyal aktiviteler seni daha çok mutlu eder?</label>
+    <textarea name="aktivite" rows="2"></textarea>
+
+    <label>5. Kendinde değiştirmek istediğin bir özellik varsa bu nedir?</label>
+    <textarea name="degistirmek" rows="2"></textarea>
+
+    <label>6. Kendinde güçlü bulduğun bir özellik varsa bu nedir?</label>
+    <textarea name="guclu" rows="2"></textarea>
+
+    <label>7. Hangi çiçeklerden hoşlanırsın?</label>
+    <textarea name="cicek" rows="2"></textarea>
+
+    <button type="submit">Gönder 💌</button>
+    <p class="success-message">Cevabın kalbe ulaştı 💖</p>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // ← EmailJS Public Key
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+        .then(() => {
+          document.querySelector(".success-message").style.display = "block";
+          this.reset();
+        }, (error) => {
+          alert("Bir hata oluştu: " + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html>
