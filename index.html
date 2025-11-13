@@ -93,8 +93,8 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   // EmailJS setup
-  const PUBLIC_KEY = "PGFlNf-4VS3qP5Mhp";
-  const SERVICE_ID = "ZCSAE1-ytvc3T04yIS1ay";
+  const PUBLIC_KEY = "f6lzo5Z9JVUnTMzLD";
+  const SERVICE_ID = "mH8QcZv5_k3MwOgLXI9k-";
   const TEMPLATE_ID = "template_jwf69nz";
 
   emailjs.init(PUBLIC_KEY);
@@ -103,21 +103,4 @@
   const successMsg = document.getElementById("successMsg");
   const errorMsg = document.getElementById("errorMsg");
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    successMsg.style.display = "none";
-    errorMsg.style.display = "none";
-
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
-      .then(() => {
-        successMsg.style.display = "block";
-        this.reset();
-      }, (err) => {
-        console.error("EmailJS Hatası:", err);
-        errorMsg.style.display = "block";
-      });
-  });
-</script>
-
-</body>
-</html>
+  form.addEventListener("
